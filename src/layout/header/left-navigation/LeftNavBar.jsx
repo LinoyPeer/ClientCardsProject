@@ -1,5 +1,3 @@
-
-
 import React, { useState } from "react";
 import { Box, IconButton, useMediaQuery, useTheme } from "@mui/material";
 import MenuIcon from "@mui/icons-material/Menu";
@@ -20,10 +18,12 @@ export default function LeftNavBar() {
   const { isSearchOpen, handleSearchClick, handleSearch, showSearchOn } = useSearch();
 
   const toggleMenu = () => {
-    setOpenMenu(!openMenu);
+    setOpenMenu(prev => !prev);
   };
 
-
+  const handleNavItemClick = () => {
+    setOpenMenu(false); // סגור את התפריט כאשר לוחצים על פריט ניווט
+  };
 
   return (
     <Box
@@ -39,7 +39,6 @@ export default function LeftNavBar() {
         overflowX: 'hidden',
       }}
     >
-
       <Box
         sx={{
           display: 'flex',
@@ -48,15 +47,14 @@ export default function LeftNavBar() {
           width: '100%',
         }}
       >
-
         <Box sx={{ display: 'flex', alignItems: 'center', gap: '1rem' }}>
           <LogoIcon />
           <Logo />
         </Box>
         {!isDesktop && showSearchOn.some(route => location.pathname.includes(route)) && (
-          <Box sx={{ display: 'flex', alignItems: 'center' }}>
+          <Box sx={{ display: 'flex', alignItems: 'center', marginRight: '3em' }}>
             {isSearchOpen ? (
-              <SearchBar onSearch={handleSearch} />
+              <SearchBar sx={{ borderRadius: '10px' }} onSearch={handleSearch} />
             ) : (
               <IconButton title="Search" onClick={handleSearchClick}>
                 <SearchIcon />
@@ -64,7 +62,6 @@ export default function LeftNavBar() {
             )}
           </Box>
         )}
-
         {!isDesktop && (
           <IconButton
             onClick={toggleMenu}
@@ -82,7 +79,6 @@ export default function LeftNavBar() {
       </Box>
 
       <Box
-        onClick={!isDesktop ? toggleMenu : undefined}
         display={!isDesktop ? 'flex' : 'inline-flex'}
         flexDirection={!isDesktop && 'column'}
         position={'absolute'}
@@ -102,14 +98,14 @@ export default function LeftNavBar() {
           transition: 'all 0.3s ease-in-out',
         }}
       >
-        {user && <NavBarItem to={ROUTES.CARDS} label={"Cards"} />}
-        <NavBarItem to={ROUTES.ABOUT} label={"About"} />
-        {user && <NavBarItem to={ROUTES.FAV_CARDS} label={"Favorites"} />}
+        {user && <NavBarItem disabled={!openMenu} to={ROUTES.CARDS} label={"Cards"} onClick={handleNavItemClick} />}
+        <NavBarItem disabled={!openMenu} to={ROUTES.ABOUT} label={"About"} onClick={handleNavItemClick} />
+        {user && <NavBarItem disabled={!openMenu} to={ROUTES.FAV_CARDS} label={"Favorites"} onClick={handleNavItemClick} />}
         {user && user.isBusiness && (
-          <NavBarItem to={ROUTES.MY_CARDS} label={"My Cards"} />
+          <NavBarItem disabled={!openMenu} to={ROUTES.MY_CARDS} label={"My Cards"} onClick={handleNavItemClick} />
         )}
         {user && user.isAdmin && (
-          <NavBarItem to={ROUTES.CRM_ADMIN} label={"CRM"} />
+          <NavBarItem disabled={!openMenu} to={ROUTES.CRM_ADMIN} label={"CRM"} onClick={handleNavItemClick} />
         )}
       </Box>
     </Box>

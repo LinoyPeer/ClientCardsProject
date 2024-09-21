@@ -5,9 +5,10 @@ import signupSchema from '../models/signupSchema';
 import { useSnack } from '../../providers/SnackbarProvider';
 import { useNavigate } from 'react-router-dom';
 import ROUTES from '../../routes/routesModel';
-import { Container, Button } from '@mui/material';
+import { Container, Button, Typography, useMediaQuery } from '@mui/material';
 import { useCurrentUser } from '../providers/UserProvider';
 import Form from '../../forms/components/Form';
+import { useTheme } from '@emotion/react';
 
 export default function EditProfilePage() {
     const {
@@ -24,6 +25,9 @@ export default function EditProfilePage() {
     const setSnack = useSnack();
     const navigate = useNavigate();
     const { user } = useCurrentUser();
+    const theme = useTheme();
+    const isDesktop = useMediaQuery(theme.breakpoints.up('md'));
+
     useEffect(() => {
         if (user && user._id) {
             let token = localStorage.getItem('my token');
@@ -123,8 +127,9 @@ export default function EditProfilePage() {
                 maxWidth: '600px',
             }}
         >
-            <h1>Edit Profile</h1>
-
+            <Typography variant="h4" align="center" gutterBottom>
+                EDIT PROFILE
+            </Typography>
             <Form
                 onSubmit={(e) => {
                     e.preventDefault();
@@ -135,6 +140,7 @@ export default function EditProfilePage() {
                 onReset={handleReset}
                 validateForm={validateForm}
                 showSubmitButton={false}
+                styles={!isDesktop && { width: '16em' }}
             >
                 <Input
                     name="first"
@@ -143,6 +149,7 @@ export default function EditProfilePage() {
                     onChange={handleChange}
                     data={data}
                     sm={6}
+                    sx={!isDesktop ? { mb: 1.5 } : { mb: 2 }}
                 />
                 <Input
                     name="middle"
@@ -150,6 +157,7 @@ export default function EditProfilePage() {
                     error={errors.middle}
                     onChange={handleChange}
                     data={data}
+                    sx={!isDesktop ? { mb: 1.5 } : { mb: 2 }}
                     sm={6}
                     required={false}
                 />
@@ -159,6 +167,7 @@ export default function EditProfilePage() {
                     error={errors.last}
                     onChange={handleChange}
                     data={data}
+                    sx={!isDesktop ? { mb: 1.5 } : { mb: 2 }}
                     sm={6}
                 />
                 <Input
@@ -168,6 +177,7 @@ export default function EditProfilePage() {
                     error={errors.phone}
                     onChange={handleChange}
                     data={data}
+                    sx={!isDesktop ? { mb: 1.5 } : { mb: 2 }}
                     sm={6}
                 />
                 <Input
@@ -176,6 +186,7 @@ export default function EditProfilePage() {
                     error={errors.url}
                     onChange={handleChange}
                     data={data}
+                    sx={!isDesktop ? { mb: 1.5 } : { mb: 2 }}
                     sm={6}
                     required={false}
                 />
@@ -185,6 +196,7 @@ export default function EditProfilePage() {
                     error={errors.alt}
                     onChange={handleChange}
                     data={data}
+                    sx={!isDesktop ? { mb: 1.5 } : { mb: 2 }}
                     sm={6}
                     required={false}
                 />
@@ -194,6 +206,7 @@ export default function EditProfilePage() {
                     error={errors.state}
                     onChange={handleChange}
                     data={data}
+                    sx={!isDesktop ? { mb: 1.5 } : { mb: 2 }}
                     sm={6}
                     required={false}
                 />
@@ -203,9 +216,14 @@ export default function EditProfilePage() {
                     error={errors.country}
                     onChange={handleChange}
                     data={data}
+                    sx={!isDesktop ? { mb: 1.5 } : { mb: 2 }}
                     sm={6}
                 />
-                <Button onClick={handleFormSubmit} variant="contained" sx={{ mt: 3 }}>
+                <Button onClick={handleFormSubmit} variant="contained" sx={{
+                    mt: 3,
+                    ml: 1,
+                    color: "black",
+                }}>
                     Save Changes
                 </Button>
             </Form>

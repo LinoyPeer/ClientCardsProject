@@ -49,7 +49,7 @@ export default function Footer() {
               }}
             >
 
-              {!isDesktop && <Logged />}
+              {!isDesktop && user && <Logged />}
 
               <RightNavbar mobileSize="inline-flex" isIconDispaly={false} />
             </BottomNavigation>

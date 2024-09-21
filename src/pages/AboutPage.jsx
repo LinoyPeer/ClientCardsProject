@@ -43,20 +43,20 @@ export default function AboutPage() {
 
             <strong>Detailed Card View:</strong> Click on any card to see more details, including images, addresses, and phone numbers.<br />
 
-            <strong>User-Friendly Navigation:</strong> Navigate easily through sections like About, your favorite cards, and more with our intuitive menu.<br />
+            <strong>User-Friendly Navigation:</strong> Navigate easily through sections like About, your favorite cards, and more with my intuitive menu.<br />
 
             <strong>Registration & Login:</strong> Sign up for an account to unlock features like card creation and editing. Already have an account? Log in to continue.
           </Typography>
 
           <Typography variant="h6" paragraph>
-            Our Mission
+            My Mission
           </Typography>
           <Typography variant="body1" paragraph>
-            Our mission is to simplify professional networking by providing a platform to create, share, and manage business cards online. With a focus on simplicity and usability, we help you present your best self, whether networking in person or online.
+            my mission is to simplify professional networking by providing a platform to create, share, and manage business cards online. With a focus on simplicity and usability, we help you present your best self, whether networking in person or online.
           </Typography>
 
           <Typography variant="body1" paragraph>
-            Thank you for choosing our website as your digital business card solution! This expanded text helps convey the value and features of your site, making it easier for users to understand what they can do.
+            Thank you for choosing my website as your digital business card solution! This expanded text helps convey the value and features of your site, making it easier for users to understand what they can do.
           </Typography>
 
         </Container>

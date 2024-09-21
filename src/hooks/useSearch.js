@@ -27,6 +27,5 @@ export default function useSearch() {
         setSearchParams,
         handleSearch,
         showSearchOn,
-        handleSearchClose,
     }
 }

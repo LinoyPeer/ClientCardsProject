@@ -1,7 +1,7 @@
 import Grid from '@mui/material/Grid';
 import Typography from '@mui/material/Typography';
 import Form from '../../forms/components/Form';
-import { TextField } from '@mui/material';
+import { Container, TextField, useMediaQuery } from '@mui/material';
 import useForm from '../../forms/hooks/useForm.js';
 import addCardObj from '../../users/helpers/initialForms/initialCardForm.js';
 import { useLocation, useNavigate } from 'react-router-dom';
@@ -13,7 +13,8 @@ import { useTheme } from '@emotion/react';
 
 export default function EditCardPage() {
     const [initialData, setInitialData] = useState(addCardObj);
-
+    const theme = useTheme();
+    const isDesktop = useMediaQuery(theme.breakpoints.up('md'));
 
 
     const {
@@ -143,35 +144,47 @@ export default function EditCardPage() {
     }
 
     return (
-        <Form
-            onSubmit={onSubmit}
-            onReset={handleReset}
-            validateForm={validateForm}
+        <Container
+            sx={{
+                paddingTop: 8,
+                display: 'flex',
+                flexDirection: 'column',
+                alignItems: 'center',
+                maxWidth: '600px',
+            }}
         >
             <Typography variant="h4" align="center" gutterBottom>
                 EDIT CARD
             </Typography>
-            <Grid container spacing={2} justifyContent="center">
-                {fields.map((field) => (
-                    <Grid
-                        key={field.name}
-                        item xs={12} sm={6}
-                        alignItems="center"
-                        justifyContent="center"
-                    >
-                        <TextField
-                            name={field.name}
-                            label={field.label}
-                            onChange={handleChange}
-                            value={data[field.name] || ""}
-                            required={field.required}
-                            error={!!errors[field.name]}
-                            helperText={errors[field.name]}
-                            fullWidth
-                        />
-                    </Grid>
-                ))}
-            </Grid>
-        </Form>
+            <Form
+                onSubmit={onSubmit}
+                onReset={handleReset}
+                validateForm={validateForm}
+                styles={!isDesktop && { width: '16em' }}
+            >
+
+                <Grid container spacing={2} justifyContent="center">
+                    {fields.map((field) => (
+                        <Grid
+                            key={field.name}
+                            item xs={12} sm={6}
+                            alignItems="center"
+                            justifyContent="center"
+                        >
+                            <TextField
+                                name={field.name}
+                                label={field.label}
+                                onChange={handleChange}
+                                value={data[field.name] || ""}
+                                required={field.required}
+                                error={!!errors[field.name]}
+                                helperText={errors[field.name]}
+                                fullWidth
+                            />
+                        </Grid>
+                    ))}
+                </Grid>
+            </Form>
+        </Container>
     );
 }

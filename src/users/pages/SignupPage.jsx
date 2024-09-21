@@ -24,12 +24,7 @@ export default function SignupPage() {
   const { user } = useCurrentUser();
 
   if (user) return <Navigate to={ROUTES.ROOT} replace />;
-  const avatars = [
-    "/path/to/avatar1.png",
-    "/path/to/avatar2.png",
-    "/path/to/avatar3.png",
-    // המשך הרשימה...
-  ];
+
   return (
     <Container
       sx={{

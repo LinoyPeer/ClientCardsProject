@@ -3,7 +3,7 @@ import Grid from '@mui/material/Grid';
 import Typography from '@mui/material/Typography';
 import Form from '../../forms/components/Form';
 import cardSchema from '../../users/models/cardSchema';
-import { Box, TextField, useMediaQuery } from '@mui/material';
+import { Box, Container, TextField, useMediaQuery } from '@mui/material';
 import useForm from '../../forms/hooks/useForm.js';
 import addCardObj from '../../users/helpers/initialForms/initialCardForm.js';
 import { useSnack } from '../../providers/SnackbarProvider.jsx';
@@ -87,66 +87,59 @@ export default function AddCardPage() {
     }
 
     return (
-        <Box
+        <Container
             sx={{
+                paddingTop: 8,
                 display: 'flex',
-                justifyContent: 'center',
+                flexDirection: 'column',
                 alignItems: 'center',
+                maxWidth: '600px',
             }}
         >
-            <Box
-                width={750}
-                sx={{
-                    display: 'flex',
-                    flexDirection: 'column',
-                    justifyContent: 'center',
-                    alignItems: 'center',
-                    width: { xs: '16em', md: '750px' },
-                }}
+            <Typography variant="h4" align="center" gutterBottom>
+                ADD NEW CARD
+            </Typography>
+
+            <Form
+                onSubmit={handleSubmit}
+                onReset={handleResetForEdit}
+                validateForm={validateForm}
+                styles={!isDesktop && { width: '16em' }}
             >
-                <Form
-                    onSubmit={handleSubmit}
-                    onReset={handleResetForEdit}
-                    validateForm={validateForm}
+                <Grid
+                    container
+                    spacing={2}
+                    justifyContent="center"
                 >
-                    <Typography variant="h4" align="center" gutterBottom>
-                        ADD NEW CARD
-                    </Typography>
-                    <Grid
-                        container
-                        spacing={2}
-                        justifyContent="center"
-                    >
-                        {fields.map((field) => (
-                            <Grid
+                    {fields.map((field) => (
+                        <Grid
+                            key={field.name}
+                            item
+                            xs={12}
+                            sm={6}
+                            alignItems='center'
+                            justifyContent='center'
+                            textAlign={!isDesktop && 'center'}
+                        >
+                            <TextField
+                                sx={{
+                                    ...(isDesktop ? {} : { width: '16em' })
+                                }}
                                 key={field.name}
-                                item
-                                xs={12}
-                                sm={6}
-                                alignItems='center'
-                                justifyContent='center'
-                                textAlign={!isDesktop && 'center'}
-                            >
-                                <TextField
-                                    sx={{
-                                        ...(isDesktop ? {} : { width: '15em' })
-                                    }}
-                                    key={field.name}
-                                    name={field.name}
-                                    label={field.label}
-                                    onChange={handleChange}
-                                    value={data[field.name] || ""}
-                                    required={field.required}
-                                    error={!!errors[field.name]}
-                                    helperText={errors[field.name]}
-                                    fullWidth
-                                />
-                            </Grid>
-                        ))}
-                    </Grid>
-                </Form>
-            </Box>
-        </Box>
+                                name={field.name}
+                                label={field.label}
+                                onChange={handleChange}
+                                value={data[field.name] || ""}
+                                required={field.required}
+                                error={!!errors[field.name]}
+                                helperText={errors[field.name]}
+                                fullWidth
+                            />
+                        </Grid>
+                    ))}
+                </Grid>
+            </Form>
+        </Container>
 
     );
 }

@@ -53,7 +53,8 @@ const Form = ({
         </Grid>
         <Grid item xs={12} sm={6}>
           <FormButton
-            node={<LoopIcon />}
+            node="Clear"
+            color="warning"
             variant="outlined"
             component="div"
             onClick={onReset}
@@ -64,9 +65,20 @@ const Form = ({
           <Grid item xs={12}>
             <FormButton
               node="Submit"
+              variant="outlined"
+              color="success"
               onClick={onSubmit}
               disabled={isBlocked || isLoading || !validateForm()}
-              size="large"
+              sx={{
+                backgroundColor: 'transparent',
+                color: 'black',
+                borderColor: 'green',
+                '&:hover': {
+                  backgroundColor: 'white',
+                  color: 'green',
+                  borderColor: 'green',
+                },
+              }}
             />
           </Grid>
         )}
