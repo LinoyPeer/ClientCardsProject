@@ -7,7 +7,6 @@ import { useSnack } from "../../providers/SnackbarProvider";
 import { useNavigate } from "react-router-dom";
 
 export default function SignupForm({
-
   onSubmit,
   onReset,
   validateForm,
