@@ -48,7 +48,7 @@ export default function FavoriteCards() {
   return (
     <>
 
-      <PageHeader title={"My cards"} subtitle={"Welcome to favorite cards page"} />
+      <PageHeader title={"My favorite cards"} subtitle={"Welcome to favorite cards page"} />
       <Typography marginLeft={3}>
         Here you will find the cards you liked
       </Typography>

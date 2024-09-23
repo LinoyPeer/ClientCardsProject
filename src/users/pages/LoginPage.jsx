@@ -22,7 +22,6 @@ export default function LoginPage() {
   const { user } = useCurrentUser();
 
   const MAX_LOGIN_ATTEMPTS = 3;
-  // const BLOCK_DURATION = 24 * 60 * 60 * 1000;
   const BLOCK_DURATION = 24 * 60 * 60 * 1000;
 
   const loginAttempts = JSON.parse(localStorage.getItem("loginAttempts")) || [];
@@ -32,9 +31,7 @@ export default function LoginPage() {
   const isBlocked = recentAttempts.length >= MAX_LOGIN_ATTEMPTS;
 
   if (user) return <Navigate to={ROUTES.ROOT} replace />;
-  // console.log("loginAttempts:", loginAttempts);
-  // console.log("recentAttempts:", recentAttempts);
-  // console.log("isBlocked:", isBlocked);
+
 
   return (
     <Container>

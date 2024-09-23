@@ -7,22 +7,22 @@ import Logo from "../logo/Logo";
 import NavBarItem from "../../../routes/components/NavBarItem";
 import { useCurrentUser } from "../../../users/providers/UserProvider";
 import useSearch from "../../../hooks/useSearch";
-import SearchIcon from '@mui/icons-material/Search';
+import SearchIcon from "@mui/icons-material/Search";
 import SearchBar from "../right-navigation/SearchBar";
 
 export default function LeftNavBar() {
   const { user } = useCurrentUser();
   const theme = useTheme();
-  const isDesktop = useMediaQuery(theme.breakpoints.up('md'));
+  const isDesktop = useMediaQuery(theme.breakpoints.up("md"));
   const [openMenu, setOpenMenu] = useState(false);
   const { isSearchOpen, handleSearchClick, handleSearch, showSearchOn } = useSearch();
 
   const toggleMenu = () => {
-    setOpenMenu(prev => !prev);
+    setOpenMenu((prev) => !prev);
   };
 
   const handleNavItemClick = () => {
-    setOpenMenu(false); // סגור את התפריט כאשר לוחצים על פריט ניווט
+    setOpenMenu(false);
   };
 
   return (
@@ -68,44 +68,44 @@ export default function LeftNavBar() {
             sx={{
               backgroundColor: '#E1DCD9',
               position: 'relative',
-              right: '16rem'
+              right: '16rem',
             }}
           >
-            <MenuIcon sx={{
-              color: 'black'
-            }} />
+            <MenuIcon
+              sx={{
+                color: 'black',
+              }}
+            />
           </IconButton>
         )}
       </Box>
 
       <Box
-        display={!isDesktop ? 'flex' : 'inline-flex'}
-        flexDirection={!isDesktop && 'column'}
-        position={'absolute'}
-        alignItems={isDesktop ? 'center' : 'flex-start'}
-        marginTop={isDesktop && '-10px'}
-        marginLeft={isDesktop && '19rem'}
         sx={{
-          gap: isDesktop ? 2 : 1,
-          top: '60px',
-          left: 25,
-          width: isDesktop ? 'auto' : '150px',
-          backgroundColor: isDesktop ? 'transparent' : 'white',
-          boxShadow: !isDesktop ? '0px 4px 8px rgba(0, 0, 0, 0.1)' : 'none',
-          borderRadius: !isDesktop ? '8px' : '0',
-          opacity: !isDesktop && (openMenu ? 1 : 0),
-          transform: openMenu ? 'translateY(0)' : 'translateY(-20px)',
-          transition: 'all 0.3s ease-in-out',
+          maxHeight: !isDesktop && openMenu ? "200px" : "0",
+          overflow: "hidden",
+          transition: !isDesktop ? "max-height 0.3s ease-in-out" : "none",
+          position: isDesktop ? "static" : "absolute",
+          top: !isDesktop ? "60px" : "0",
+          left: "25px",
+          width: isDesktop ? "1300px" : "150px",
+          marginLeft: isDesktop ? '-30rem' : '0',
+          backgroundColor: isDesktop ? "transparent" : "white",
+          boxShadow: !isDesktop ? "0px 4px 8px rgba(0, 0, 0, 0.1)" : "none",
+          borderRadius: !isDesktop ? "8px" : "0",
+          display: 'flex',
+          flexDirection: isDesktop ? 'row' : 'column',
+          gap: isDesktop ? '1.3rem' : '0',
         }}
       >
-        {user && <NavBarItem disabled={!openMenu} to={ROUTES.CARDS} label={"Cards"} onClick={handleNavItemClick} />}
-        <NavBarItem disabled={!openMenu} to={ROUTES.ABOUT} label={"About"} onClick={handleNavItemClick} />
-        {user && <NavBarItem disabled={!openMenu} to={ROUTES.FAV_CARDS} label={"Favorites"} onClick={handleNavItemClick} />}
+        {user && <NavBarItem to={ROUTES.CARDS} label={"Cards"} onClick={handleNavItemClick} />}
+        <NavBarItem to={ROUTES.ABOUT} label={"About"} onClick={handleNavItemClick} />
+        {user && <NavBarItem to={ROUTES.FAV_CARDS} label={"Favorites"} onClick={handleNavItemClick} />}
         {user && user.isBusiness && (
-          <NavBarItem disabled={!openMenu} to={ROUTES.MY_CARDS} label={"My Cards"} onClick={handleNavItemClick} />
+          <NavBarItem to={ROUTES.MY_CARDS} label={"My Cards"} onClick={handleNavItemClick} />
         )}
         {user && user.isAdmin && (
-          <NavBarItem disabled={!openMenu} to={ROUTES.CRM_ADMIN} label={"CRM"} onClick={handleNavItemClick} />
+          <NavBarItem to={ROUTES.CRM_ADMIN} label={"CRM"} onClick={handleNavItemClick} />
         )}
       </Box>
     </Box>
