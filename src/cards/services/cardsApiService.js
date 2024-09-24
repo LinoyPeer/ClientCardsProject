@@ -84,3 +84,45 @@
 //     }
 // };
 // console.log(getToken());
+
+// src/cards/services/cardsApiService.js
+
+
+// gggggg
+// // export const getCardById = async (cardId) => {
+// //     const token = localStorage.getItem('my token');
+// //     const myHeaders = new Headers();
+// //     myHeaders.append("x-auth-token", token);
+
+// //     const requestOptions = {
+// //         method: "GET",
+// //         headers: myHeaders,
+// //         redirect: "follow"
+// //     };
+
+// //     const response = await fetch(`https://monkfish-app-z9uza.ondigitalocean.app/bcard2/cards/${cardId}`, requestOptions);
+// //     if (!response.ok) {
+// //         throw new Error("Failed to fetch the card data");
+// //     }
+// //     return await response.json();
+// // };
+
+// // export const updateCard = async (cardId, cardData) => {
+// //     const token = localStorage.getItem('my token');
+// //     const myHeaders = new Headers();
+// //     myHeaders.append("x-auth-token", token);
+// //     myHeaders.append("Content-Type", "application/json");
+
+// //     const requestOptions = {
+// //         method: "PUT",
+// //         headers: myHeaders,
+// //         body: JSON.stringify(cardData),
+// //         redirect: "follow"
+// //     };
+
+// //     const response = await fetch(`https://monkfish-app-z9uza.ondigitalocean.app/bcard2/cards/${cardId}`, requestOptions);
+// //     if (!response.ok) {
+// //         throw new Error("Failed to update the card");
+// //     }
+// //     return await response.json();
+// // };
