@@ -93,6 +93,7 @@ export default function Footer() {
                     color: "#EBE2CA",
                     boxShadow: "0px 11px 11px 4px rgba(0, 0, 0, 0.1)",
                     borderRadius: "50%",
+                    transition: 'all 0.3s ease-in-out',
                   }}
                 />
               }
@@ -106,6 +107,7 @@ export default function Footer() {
                     color: "#EBE2CA",
                     boxShadow: "0px 11px 11px 4px rgba(0, 0, 0, 0.1)",
                     borderRadius: "50%",
+                    transition: 'all 0.4s ease-in-out',
                   }}
                 />
               }
@@ -120,6 +122,7 @@ export default function Footer() {
                       color: "#EBE2CA",
                       boxShadow: "0px 11px 11px 4px rgba(0, 0, 0, 0.1)",
                       borderRadius: "50%",
+                      transition: 'all 0.4s ease-in-out',
                     }}
                   />
                 }
@@ -135,6 +138,7 @@ export default function Footer() {
                       color: "#EBE2CA",
                       boxShadow: "0px 11px 11px 4px rgba(0, 0, 0, 0.1)",
                       borderRadius: "50%",
+                      transition: 'all 0.4s ease-in-out',
                     }}
                   />
                 }
@@ -151,6 +155,7 @@ export default function Footer() {
                       color: "#EBE2CA",
                       boxShadow: "0px 11px 11px 4px rgba(0, 0, 0, 0.1)",
                       borderRadius: "50%",
+                      transition: 'all 0.4s ease-in-out',
                     }}
                   />
                 }

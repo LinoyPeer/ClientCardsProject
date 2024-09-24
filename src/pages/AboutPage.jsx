@@ -23,8 +23,6 @@ export default function AboutPage() {
 
         }}
       >
-
-
         <Container sx={{ flex: 1, mr: 2 }} >
           <Typography variant="body1" paragraph mt={isDesktop ? 10 : 5}>
             <strong>Welcome to My Card Website</strong><br />

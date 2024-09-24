@@ -39,7 +39,13 @@ export default function CrmUsers() {
                         indeterminate={selected.length > 0 && selected.length < users.length}
                         checked={users.length > 0 && selected.length === users.length}
                         onChange={handleSelectAllClick}
-                        sx={{ backgroundColor: "#000" }}
+                        sx={{
+                            transition: 'all 0.3s ease-in-out',
+                            backgroundColor: "#000",
+                            "&:hover": {
+                                backgroundColor: "#F1E8CF", // צבע רקע ב-hover
+                            },
+                        }}
                     />
                 </TableCell>
                 {!isMobile && (

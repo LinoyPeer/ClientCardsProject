@@ -18,7 +18,7 @@ import { useTheme as muiUseTheme } from "@mui/material/styles";
 export default function RightNavbar({ mobileSize, isIconDispaly }) {
   const { user } = useCurrentUser();
   const { isDark, toggleDarkMode } = useTheme();
-  const { isSearchOpen, handleSearchClick, handleSearch, showSearchOn } = useSearch();
+  const { isSearchOpen, handleSearchClick, handleSearch, showSearchOn, hiddenSearch } = useSearch();
   const navigate = useNavigate();
   const location = useLocation();
   const theme = muiUseTheme();
@@ -34,6 +34,17 @@ export default function RightNavbar({ mobileSize, isIconDispaly }) {
 
       {isDesktop && showSearchOn.some(route => location.pathname.endsWith(route)) && (
         <Box sx={{ display: 'flex', alignItems: 'center' }}>
+          {isSearchOpen ? (
+            <SearchBar onSearch={handleSearch} />
+          ) : (
+            <IconButton title="Search" onClick={handleSearchClick}>
+              <SearchIcon />
+            </IconButton>
+          )}
+        </Box>
+      )}
+      {isDesktop && hiddenSearch.some(route => location.pathname.endsWith(route)) && (
+        <Box sx={{ display: 'flex', visibility: 'hidden', alignItems: 'center' }}>
           {isSearchOpen ? (
             <SearchBar onSearch={handleSearch} />
           ) : (

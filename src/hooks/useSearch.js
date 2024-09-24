@@ -4,6 +4,7 @@ import { useState } from "react";
 
 export default function useSearch() {
     const showSearchOn = [ROUTES.CARDS, ROUTES.FAV_CARDS, ROUTES.MY_CARDS]
+    const hiddenSearch = [ROUTES.ABOUT, ROUTES.CRM_ADMIN]
     const [isSearchOpen, setIsSearchOpen] = useState(true);
     const [searchParams, setSearchParams] = useSearchParams();
 
@@ -18,5 +19,6 @@ export default function useSearch() {
         handleSearchClick,
         setSearchParams,
         showSearchOn,
+        hiddenSearch,
     }
 }

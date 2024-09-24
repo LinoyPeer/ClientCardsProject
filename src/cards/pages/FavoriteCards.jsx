@@ -5,7 +5,6 @@ import useCards from "../hooks/useCards";
 import { useCurrentUser } from "../../users/providers/UserProvider";
 import CardsFeedback from "../components/CardsFeedback";
 import { useSnack } from "../../providers/SnackbarProvider";
-import RightNavbar from "../../layout/header/right-navigation/RightNavbar";
 import { Typography } from "@mui/material";
 
 export default function FavoriteCards() {
