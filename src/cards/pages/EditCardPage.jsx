@@ -15,8 +15,6 @@ export default function EditCardPage() {
     const [initialData, setInitialData] = useState(addCardObj);
     const theme = useTheme();
     const isDesktop = useMediaQuery(theme.breakpoints.up('md'));
-
-
     const {
         errors,
         handleReset,
@@ -36,7 +34,6 @@ export default function EditCardPage() {
         method: "GET",
         redirect: "follow",
     };
-
     useEffect(() => {
         fetch(`https://monkfish-app-z9uza.ondigitalocean.app/bcard2/cards/${cardId}`, requestOptions)
             .then((response) => {

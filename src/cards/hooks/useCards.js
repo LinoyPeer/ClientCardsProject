@@ -17,6 +17,8 @@ export default function useCards() {
   const { token } = useCurrentUser();
 
 
+  const apiUrl = `https://monkfish-app-z9uza.ondigitalocean.app/bcard2/cards`;
+
   useAxios();
 
   useEffect(() => {
@@ -36,7 +38,7 @@ export default function useCards() {
   const getAllCards = useCallback(async () => {
     try {
       let response = await axios.get(
-        "https://monkfish-app-z9uza.ondigitalocean.app/bcard2/cards"
+        `${apiUrl}`
       );
       setCards(response.data);
       setSnack("success", "All cards are here!");
@@ -49,7 +51,7 @@ export default function useCards() {
   const getMyCards = useCallback(async () => {
     try {
       let response = await axios.get(
-        "https://monkfish-app-z9uza.ondigitalocean.app/bcard2/cards/my-cards"
+        `${apiUrl}/my-cards`
       );
       setCards(response.data);
       setSnack("success", "All my cards are here!");
@@ -62,7 +64,7 @@ export default function useCards() {
   const getCardById = useCallback(async (id) => {
     try {
       const response = await axios.get(
-        `https://monkfish-app-z9uza.ondigitalocean.app/bcard2/cards/${id}`
+        `${apiUrl}/${id}`
       );
       const data = response.data;
       setCard(data);
@@ -85,7 +87,7 @@ export default function useCards() {
     let config = {
       method: 'delete',
       maxBodyLength: Infinity,
-      url: `https://monkfish-app-z9uza.ondigitalocean.app/bcard2/cards/${id}`,
+      url: `${apiUrl}/${id}`,
       headers: {
         'x-auth-token': `${token}`,
         'Content-Type': 'application/json'
@@ -110,7 +112,7 @@ export default function useCards() {
   const handleLike = useCallback(async (id) => {
     try {
       const response = await axios.patch(
-        `https://monkfish-app-z9uza.ondigitalocean.app/bcard2/cards/${id}`
+        `${apiUrl}/${id}`
       );
       const newCard = response.data;
       setCard(newCard);
