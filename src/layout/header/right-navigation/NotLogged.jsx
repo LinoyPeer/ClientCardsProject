@@ -9,7 +9,7 @@ export default function NotLogged() {
 
   return (
     <>
-      {!user && <Box>
+      {!user && <Box display={"flex"}>
         <NavBarItem label="Signup" to={ROUTES.SIGNUP} />
         <NavBarItem label="Login" to={ROUTES.LOGIN} />
       </Box>}

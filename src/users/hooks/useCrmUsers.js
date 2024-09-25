@@ -80,13 +80,24 @@ const useCrmUsers = () => {
     };
 
     const handleDeleteAllSelected = async () => {
-        const toDelete = users.filter(user => selected.includes(user._id))
-        if (toDelete.length) {
+        const toDelete = users.filter(user => selected.includes(user._id));
+
+        if (toDelete.length === 0) {
+            setSnack("info", "No users selected to delete");
+            return;
+        }
+        const confirmed = confirm('Are you sure you want to delete the selected users?');
+        if (!confirmed) return;
+
+        try {
             await Promise.all(
                 toDelete.map(user => handleDeleteUsers(user._id))
             );
             setUsers(prev => prev.filter(user => !toDelete.some(toDeleteUser => toDeleteUser._id === user._id)));
             setSelected([]);
+            setSnack("success", "Selected users have been deleted");
+        } catch (error) {
+            setSnack("error", "Error deleting users");
         }
     };
 
@@ -109,7 +120,6 @@ const useCrmUsers = () => {
     const isSelected = (id) => selected.indexOf(id) !== -1;
 
     const handleDeleteUsers = async (id) => {
-        if (!confirm('ARE YOU SURE YOU WANT TO DELETE THIS USER?')) return;
         try {
             const token = localStorage.getItem('my token');
             if (!token) {

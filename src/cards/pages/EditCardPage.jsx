@@ -129,8 +129,8 @@ export default function EditCardPage() {
                     }
                     return response.text();
                 })
-                .then((result) => {
-                    console.log("Submit result:", result);
+                .then(() => {
+                    console.log("success, The card updeted successfully!")
                 })
                 .catch((error) => console.error('There was a problem with the fetch operation:', error));
 

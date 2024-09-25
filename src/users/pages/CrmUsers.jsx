@@ -20,7 +20,7 @@ import { PublishedWithChanges } from '@mui/icons-material';
 import PageHeader from '../../components/PageHeader';
 
 export default function CrmUsers() {
-    const { users, handleDeleteUsers, isSelected, handleChangeRowsPerPage, handleChangePage, handleClick, handleDeleteAllSelected, handleSelectAllClick, page, rowsPerPage, selected, handleEditSelectedUsers } = useCrmUsers();
+    const { users, isSelected, handleChangeRowsPerPage, handleChangePage, handleClick, handleDeleteAllSelected, handleSelectAllClick, page, rowsPerPage, selected, handleEditSelectedUsers } = useCrmUsers();
     const theme = useTheme();
     const isMobile = useMediaQuery(theme.breakpoints.down('sm'));
 
