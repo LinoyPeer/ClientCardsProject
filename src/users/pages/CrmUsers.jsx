@@ -124,7 +124,7 @@ export default function CrmUsers() {
                     page={page}
                     onPageChange={handleChangePage}
                     onRowsPerPageChange={handleChangeRowsPerPage}
-                    rowsPerPageOptions={isMobile ? [5, 10, 25] : [5, 10, 25, 100, 1300]}
+                    rowsPerPageOptions={isMobile ? [5, 100, 900] : [5, 10, 25, 100, 1300]}
                 />
                 <Tooltip title="Delete selected users" sx={{ marginLeft: "1rem" }}>
                     <IconButton onClick={handleDeleteAllSelected}>

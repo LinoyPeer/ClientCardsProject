@@ -2,9 +2,6 @@ import React, { useEffect } from 'react';
 import useForm from '../../forms/hooks/useForm';
 import Input from '../../forms/components/Input';
 import signupSchema from '../models/signupSchema';
-import { useSnack } from '../../providers/SnackbarProvider';
-import { useNavigate } from 'react-router-dom';
-import ROUTES from '../../routes/routesModel';
 import { Container, Button, Typography, useMediaQuery } from '@mui/material';
 import { useCurrentUser } from '../providers/UserProvider';
 import Form from '../../forms/components/Form';
@@ -17,16 +14,12 @@ export default function EditProfilePage() {
         errors,
         handleReset,
         validateForm,
-        onSubmit,
         data,
         setData,
         handleChange,
     } = useForm({}, signupSchema, () => { });
 
-    const { editUser } = useUsers()
-
-    const setSnack = useSnack();
-    const navigate = useNavigate();
+    const { editUser } = useUsers();
     const { user } = useCurrentUser();
     const theme = useTheme();
     const isDesktop = useMediaQuery(theme.breakpoints.up('md'));
