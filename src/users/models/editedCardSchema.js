@@ -17,7 +17,7 @@ const editCardSchema = Joi.object({
     web: Joi.string()
         .regex(urlRegex)
         .message('card "web" must be a valid URL')
-        .allow(""), // Allow empty string if the website is optional
+        .allow(""),
     image: Joi.object({
         url: Joi.string()
             .regex(urlRegex)
@@ -31,7 +31,7 @@ const editCardSchema = Joi.object({
         city: Joi.string().min(2).max(256).required(),
         street: Joi.string().min(2).max(256).required(),
         houseNumber: Joi.number().required(),
-        zip: Joi.number().allow(""), // Allow empty string if ZIP code is optional
+        zip: Joi.number().allow(""),
     }).required(),
 });
 

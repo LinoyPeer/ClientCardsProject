@@ -4,7 +4,6 @@ import Box from "@mui/material/Box";
 import FormButton from "./FormButton";
 import { useNavigate } from "react-router-dom";
 import Typography from "@mui/material/Typography";
-import LoopIcon from "@mui/icons-material/Loop";
 import useUsers from "../../users/hooks/useUsers";
 
 const Form = ({

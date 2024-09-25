@@ -16,6 +16,13 @@ export default function Footer() {
   const theme = useTheme();
   const isDesktop = useMediaQuery(theme.breakpoints.up('md'));
 
+  const sxButton = {
+    color: "#EBE2CA",
+    boxShadow: "0px 11px 11px 4px rgba(0, 0, 0, 0.1)",
+    borderRadius: "50%",
+    transition: "all 0.4s ease-in-out",
+  };
+
   return (
     <>
       {!isDesktop ? (
@@ -27,7 +34,7 @@ export default function Footer() {
             left: 0,
             right: 0,
             zIndex: 20,
-            backgroundColor: '#CFC9C6', // הוספת רקע כדי להבטיח שה-Footer יופיע
+            backgroundColor: '#CFC9C6',
             boxShadow: 'none',
           }}
         >
@@ -45,17 +52,13 @@ export default function Footer() {
               sx={{
                 backgroundColor: '#CFC9C6',
                 boxShadow: 'none',
-                display: { xs: "flex", md: "none" }, // הצגת התפריט במובייל בלבד
+                display: { xs: "flex", md: "none" },
               }}
             >
-
               {!isDesktop && user && <Logged />}
-
               <RightNavbar mobileSize="inline-flex" isIconDispaly={false} />
             </BottomNavigation>
-
           </Box>
-
         </Paper>
       ) :
         <Paper
@@ -88,28 +91,14 @@ export default function Footer() {
             <BottomNavigationAction
               label="About"
               icon={
-                <InfoIcon
-                  sx={{
-                    color: "#EBE2CA",
-                    boxShadow: "0px 11px 11px 4px rgba(0, 0, 0, 0.1)",
-                    borderRadius: "50%",
-                    transition: 'all 0.3s ease-in-out',
-                  }}
-                />
+                <InfoIcon sx={sxButton} />
               }
               onClick={() => navigate(ROUTES.ABOUT)}
             />
             <BottomNavigationAction
               label="All Cards"
               icon={
-                <StyleIcon
-                  sx={{
-                    color: "#EBE2CA",
-                    boxShadow: "0px 11px 11px 4px rgba(0, 0, 0, 0.1)",
-                    borderRadius: "50%",
-                    transition: 'all 0.4s ease-in-out',
-                  }}
-                />
+                <StyleIcon sx={sxButton} />
               }
               onClick={() => navigate(ROUTES.CARDS)}
             />
@@ -117,14 +106,7 @@ export default function Footer() {
               <BottomNavigationAction
                 label="My Cards"
                 icon={
-                  <RecentActors
-                    sx={{
-                      color: "#EBE2CA",
-                      boxShadow: "0px 11px 11px 4px rgba(0, 0, 0, 0.1)",
-                      borderRadius: "50%",
-                      transition: 'all 0.4s ease-in-out',
-                    }}
-                  />
+                  <RecentActors sx={sxButton} />
                 }
                 onClick={() => navigate(ROUTES.MY_CARDS)}
               />
@@ -133,14 +115,7 @@ export default function Footer() {
               <BottomNavigationAction
                 label="Fav Cards"
                 icon={
-                  <Favorite
-                    sx={{
-                      color: "#EBE2CA",
-                      boxShadow: "0px 11px 11px 4px rgba(0, 0, 0, 0.1)",
-                      borderRadius: "50%",
-                      transition: 'all 0.4s ease-in-out',
-                    }}
-                  />
+                  <Favorite sx={sxButton} />
                 }
                 onClick={() => navigate(ROUTES.FAV_CARDS)}
               />
@@ -150,14 +125,7 @@ export default function Footer() {
               <BottomNavigationAction
                 label="CRM"
                 icon={
-                  <FindInPage
-                    sx={{
-                      color: "#EBE2CA",
-                      boxShadow: "0px 11px 11px 4px rgba(0, 0, 0, 0.1)",
-                      borderRadius: "50%",
-                      transition: 'all 0.4s ease-in-out',
-                    }}
-                  />
+                  <FindInPage sx={sxButton} />
                 }
                 onClick={() => navigate(ROUTES.CRM_ADMIN)}
               />

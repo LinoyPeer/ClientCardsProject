@@ -1,5 +1,3 @@
-// (API requests) בקובץ הזה יהיו כל הפונקציות שעוסקות בבקשות לשרת
-
 import axios from "axios";
 const apiUrl = `https://monkfish-app-z9uza.ondigitalocean.app/bcard2/cards`;
 

@@ -43,7 +43,7 @@ export default function CrmUsers() {
                             transition: 'all 0.3s ease-in-out',
                             backgroundColor: "#000",
                             "&:hover": {
-                                backgroundColor: "#F1E8CF", // צבע רקע ב-hover
+                                backgroundColor: "#F1E8CF",
                             },
                         }}
                     />

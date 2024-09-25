@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React from "react";
 import { Link, Navigate } from "react-router-dom";
 import ROUTES from "../../routes/routesModel";
 import { useCurrentUser } from "../providers/UserProvider";
@@ -12,12 +12,10 @@ import Input from "../../forms/components/Input";
 import AccountBoxIcon from "@mui/icons-material/AccountBox";
 import useUsers from "../hooks/useUsers";
 
-
-
 export default function LoginPage() {
-  const { isLoading, error, handleLogin } = useUsers();
+  const { isLoading, error, loginUser } = useUsers();
   const { data, errors, handleChange, handleReset, validateForm, onSubmit } =
-    useForm(initialLoginForm, loginSchema, handleLogin);
+    useForm(initialLoginForm, loginSchema, loginUser);
 
   const { user } = useCurrentUser();
 

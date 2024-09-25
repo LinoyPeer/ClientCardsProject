@@ -59,7 +59,7 @@ const useCrmUsers = () => {
 
             setUsers(prev => prev.map(user => {
                 if (toUpdate.some(toUpdateUser => toUpdateUser._id === user._id)) {
-                    return { ...user, isBusiness: !user.isBusiness }; // נהפוך את הסטטוס של כל משתמש
+                    return { ...user, isBusiness: !user.isBusiness };
                 }
                 return user;
             }));

@@ -1,4 +1,4 @@
-import { Avatar, IconButton, useMediaQuery } from "@mui/material";
+import { IconButton, useMediaQuery } from "@mui/material";
 import React from "react";
 import NavBarLink from "../../../routes/components/NavBarLink";
 import ROUTES from "../../../routes/routesModel";

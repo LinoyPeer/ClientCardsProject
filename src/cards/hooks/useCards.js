@@ -120,8 +120,6 @@ export default function useCards() {
     [token, setSnack, user]
   );
 
-
-
   return {
     cards,
     card,

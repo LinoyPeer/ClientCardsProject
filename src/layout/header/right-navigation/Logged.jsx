@@ -11,7 +11,7 @@ import { useTheme } from "@emotion/react";
 
 export default function Logged() {
   const navigaete = useNavigate();
-  const { setUser } = useCurrentUser();
+  const { setUser, user } = useCurrentUser();
   const theme = useTheme();
   const isDesktop = useMediaQuery(theme.breakpoints.up('md'));
 
@@ -32,7 +32,7 @@ export default function Logged() {
         }} >
         <LogoutIcon />
       </IconButton>
-      {isDesktop && (<IconButton sx={{
+      {isDesktop && user && (<IconButton sx={{
         p: 0, display: "inline-flex", marginLeft: 2, marginRight: 2, marginTop: "-0.5em",
       }}>
         <Avatar alt="avatar" src="/images/avatar.png"

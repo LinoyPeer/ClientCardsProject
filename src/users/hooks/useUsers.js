@@ -1,6 +1,6 @@
 import { useCallback, useState } from "react";
 import { useCurrentUser } from "../providers/UserProvider";
-import { login } from "../services/usersApiService";
+import { login, editUserApi, signup } from "../services/usersApiService";
 import {
   getUser,
   setTokenInLocalStorage,
@@ -8,6 +8,7 @@ import {
 import { useNavigate } from "react-router-dom";
 import ROUTES from "../../routes/routesModel";
 import { useSnack } from "../../providers/SnackbarProvider";
+import { normalizeUser } from "../forms/utils/transformUser";
 
 export default function useUsers() {
   const [isLoading, setIsLoading] = useState();
@@ -16,7 +17,7 @@ export default function useUsers() {
   const navigate = useNavigate();
   const setSnack = useSnack();
 
-  const handleLogin = useCallback(async (userLogin) => {
+  const loginUser = useCallback(async (userLogin) => {
     setIsLoading(true);
     try {
       const token = await login(userLogin);
@@ -37,16 +38,50 @@ export default function useUsers() {
         setSnack("error", "You are blocked for 1 hour due to too many failed login attempts.");
         console.log("You are blocked for 1 hour due to too many failed login attempts.");
       }
-      console.log(err);
       setError(err.message);
       setSnack("error", err.message);
     }
     setIsLoading(false);
   }, []);
 
+  const registerUser = async (flatUser) => {
+    const normalizedUser = normalizeUser(flatUser);
+    setIsLoading(true);
+    setError(null);
+    try {
+      const userData = await signup(normalizedUser);
+      setSnack("success", "Registration successfully completed!");
+      navigate(ROUTES.LOGIN)
+      return userData;
+    } catch (err) {
+      setError(err.message);
+      setSnack("error", err.message);
+    } finally {
+      setIsLoading(false);
+    }
+  };
+
+  const editUser = async (flatUser, id) => {
+    setIsLoading(true);
+    setError(null);
+    try {
+      const userData = await editUserApi(flatUser, id)
+      setSnack("success", "Edit User successfully completed!");
+      navigate(ROUTES.CARDS)
+      return userData;
+    } catch (err) {
+      setError(err.message);
+      setSnack("error", err.message);
+    } finally {
+      setIsLoading(false);
+    }
+  }
+
   return {
     isLoading,
     error,
-    handleLogin,
+    loginUser,
+    registerUser,
+    editUser,
   };
 }

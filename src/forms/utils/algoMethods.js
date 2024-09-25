@@ -4,5 +4,3 @@ export const makeFirstLetterCapital = (input) => {
   }
   return input[0].toUpperCase() + input.slice(1).toLowerCase();
 };
-
-//write and export makeFirstLetterCapital(string)=>string
