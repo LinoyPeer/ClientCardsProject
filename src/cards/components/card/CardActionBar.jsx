@@ -11,6 +11,7 @@ import { useNavigate } from "react-router-dom";
 export default function CardActionBar({
   userId,
   cardId,
+  token,
   handleDelete,
   handleEdit,
   handleLike,
@@ -26,7 +27,7 @@ export default function CardActionBar({
         <Tooltip title="delete card">
           <span>
             {user && (user.isAdmin || user._id === userId) && (
-              <IconButton onClick={() => handleDelete(cardId)}>
+              <IconButton onClick={() => handleDelete(cardId, token)}>
                 <DeleteIcon sx={{ fontSize: "20px", color: "#918A87" }} />
               </IconButton>
             )}

@@ -80,9 +80,12 @@ export default function AddCardPage() {
         axios.request(config)
             .then((response) => {
                 console.log(JSON.stringify(response.data));
+                setSnack("success", "Card added successfully!");
+                navigate(ROUTES.CARDS);
             })
             .catch((error) => {
                 console.log(error);
+                setSnack("error", "Failed to add card.");
             });
     }
 

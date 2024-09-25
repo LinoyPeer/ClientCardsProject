@@ -23,7 +23,6 @@ export default function CardDetailsPage() {
 
   if (isLoading) return <Spinner />;
   if (error) return <Error errorMessage={error} />;
-
   return (
     <Container sx={{ mt: 4 }}>
       <PageHeader

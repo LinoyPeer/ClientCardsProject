@@ -18,29 +18,22 @@ export default function FavoriteCards() {
   useEffect(() => {
     try {
       getAllCards();
-      if (filteredCardsOfCards) {
-        setSnack("success", "All my favorite cards are here!");
-      }
     }
     catch (err) {
+      setSnack("error", "There was an error presenting the favorite cards");
       console.log(err);
     }
-
   }, [getAllCards]);
 
   useEffect(() => {
     if (!user) return;
-
     const query = searchParams.get("q")?.toLowerCase() || "";
-
     const likedCardsOfCurrentUser = cards.filter(card => card.likes.includes(user._id));
-
     const filtered = likedCardsOfCurrentUser.filter(card =>
       card.title.toLowerCase().includes(query) ||
       card.subtitle.toLowerCase().includes(query) ||
       card.description.toLowerCase().includes(query)
     );
-
     setFilteredCardsOfCards(filtered);
   }, [cards, searchParams, user]);
 

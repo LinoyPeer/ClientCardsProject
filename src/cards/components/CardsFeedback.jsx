@@ -5,6 +5,8 @@ import { Typography } from "@mui/material";
 import Cards from "./Cards";
 import CardActionBar from "./card/CardActionBar";
 import useCards from "../hooks/useCards";
+import { useCurrentUser } from "../../users/providers/UserProvider";
+import AddNewCardButton from "./AddNewCardButton";
 
 export default function CardsFeedback({
   isLoading,
@@ -14,6 +16,7 @@ export default function CardsFeedback({
   handleLike,
 }) {
   const { card } = useCards();
+  const { user } = useCurrentUser();
 
   if (isLoading) return <Spinner />;
   if (error) return <Error errorMessage={error} />;
@@ -32,15 +35,19 @@ export default function CardsFeedback({
         handleLike={handleLike}
       />
     );
-  <CardActionBar
-    userId={card.userId}
-    cardId={card._id}
-    handleDelete={handleDelete}
-    handleEdit={handleEdit}
-    handleLike={handleLike}
-    likes={card.likes}
-    phone={card.phone}
-  />
+  if (card && card.userId) {
+    return (
+      <CardActionBar
+        userId={card.userId}
+        cardId={card._id}
+        handleDelete={handleDelete}
+        handleEdit={handleEdit}
+        handleLike={handleLike}
+        likes={card.likes}
+        phone={card.phone}
+      />
+    );
+  }
 
   { user && <AddNewCardButton /> }
 
